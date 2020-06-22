@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.5.1.js"></script>
+    <style>
+        .box {
+            width: 100px;
+            height: 300px;
+            background: salmon;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="btn-group-vertical" role="group" aria-label="">
+        <button type="button" class="btn btn-secondary"></button>
+        <button type="button" class="btn btn-secondary"></button>
+        <div class="btn-group" role="group">
+            <button id="dropdownId" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownId">
+                <a class="dropdown-item" href="#"></a>
+                <a class="dropdown-item" href="#"></a>
+            </div>
+        </div>
+    </div>
+    <div class="box"></div>
+    <button>显示</button>
+    <button>隐藏</button>
+    <button>切换</button>
+    <script>
+
+        // // obox.innerText = "我是div";
+        // // var obox = $(".box").text("我是新设置的内容");
+        // $(".box").text("给你一张好人卡")
+        // // $(".box").css("width", "500px").css("height", "200px").css("background", "red");
+        // // $(".box").css("width", "500px")
+        $(".box").css({
+            width: "200px",
+            height: "100px",
+            background: "green",
+            border: "5px solid red",
+
+        })
+        // 显示和隐藏
+        // $("button").eq(0).click(() => $(".box").show(3000, () => console.log("show")));
+        // $("button").eq(1).click(() => $(".box").hide(3000, () => console.log("hide")));
+        // $("button").eq(2).click(() => $(".box").toggle(3000, () => console.log("toggle")));
+
+        // 展开和收起
+        // $("button").eq(0).click(() => $(".box").slideDown(2000, () => console.log("slideDown")));
+        // $("button").eq(1).click(() => $(".box").slideUp(2000, () => console.log("slideUp")));
+        // $("button").eq(2).click(() => $(".box").slideToggle(2000, () => console.log("slideToggle")));
+
+        // 淡入和淡出
+        // $("button").eq(0).click(() => $(".box").fadeIn(2000, () => console.log("fadeIn")));
+        // $("button").eq(1).click(() => $(".box").fadeOut(2000, () => console.log("fadeOut")));
+        // $("button").eq(2).click(() => $(".box").fadeToggle(2000, () => console.log("fadeToggle")));
+
+
+
+    </script>
+</body>
+
+</html>

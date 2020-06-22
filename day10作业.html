@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var oli = document.querySelector(".general").querySelectorAll("li");
+        var obj = [];
+        oli.forEach(li => {
+            let o = {};
+            o.src = li.querySelector("img").src;
+            o.price = li.querySelector(".price-box").innerText;
+            o.title = li.querySelector(".title-selling-point").innerText;
+            o.evaluate = li.querySelector(".info-evaluate").innerText ? li.querySelector(".info-evaluate").innerText : undefined;
+            o.store = li.querySelector(".store-stock").innerText;
+            obj.push(o);
+        })
+        console.log(obj)
+    </script>
+</body>
+
+</html>

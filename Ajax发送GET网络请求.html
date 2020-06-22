@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" placeholder="请输入用户名" id="username">
+    <input type="text" placeholder="请输入密码" id="password">
+    <button>发送GET请求</button>
+    <button>发送GET请求传递参数</button>
+    <script>
+        let oBtn = document.querySelector('button');
+        oBtn.onclick = () => {
+            let xht = new XMLHttpRequest;
+            xhr.open('get', 'http://127.0.0.1/code/server/server-1.php', true);
+            xhr.send();
+            xhr.onreadrstatechange = () => {
+                if (xhr.readyState == 4) {
+                    console.log(xhr.responseText);
+                }
+            }
+        }
+        let oSend = document.querySelectorAll('button')[1];
+        let _username = document.querySelector('#username');
+        let _password = document.querySelector('#password');
+        oSend.onclick = () => {
+            let queryString = `?username=${_username.value}&password=${_password.value}`;
+            let xhr = new XMLHttpRequest;
+            xhr.open("get", "./server/server-2.php" + queryString, true);
+            xhr.send();
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState == 4) {
+                    console.log(xhr.responseText);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

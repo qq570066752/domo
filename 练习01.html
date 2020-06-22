@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="button" value="Login" οnclick="submit()" />  
+            <input type="text" name="text" id="text" />  
+            <input type="button" value="show" οnclick="show()" />  
+            <a href="33.html" target="_blank">33.html</a>
+
+    <script>
+        function submit() {
+            var str = document.querySelector("input").value.trim();
+            setInfo(str);
+            document.getElementById("text").value = "";
+        }
+        //储存数据  
+        function setInfo(name) {
+            var storage = window.sessionStorage;
+            storage.setItem('name', name);
+        }
+        //显示数据  
+        function show() {
+            var storage = window.sessionStorage;
+            var str = "your name is " + storage.getItem("name");
+            document.getElementById("text").value = str;
+        }  
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="username">用户名</label>
+        <input type="text" placeholder="请输入用户名" id="username" name="user">
+        <label for="pwd">密码</label><input type="text" placeholder="请输入密码" id="pwd" name="pwd">
+    </form>
+    <button>登录</button>
+    <script>
+        // 1.先获取标签
+        var users = document.querySelector("#username");
+        var pwds = document.querySelector("#pwd");
+        var btons = document.querySelector("button");
+        // console.log(users, pwds, btons);
+        // 2.添加点击事件
+        btons.onclick = function () {
+            let userText = users.value.trim();
+            let pwdText = pwds.value.trim();
+            if (userText.length == 0 || pwdText.length == 0) {
+                alert("请输入必要的信息")
+                return;
+            }
+
+
+            let xml = new XMLHttpRequest;
+            xml.open("POST", "../server/01.form.php", true);
+            xml.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            let queryString = `user=${userText}&pwd=${pwdText}`;
+            xml.send(queryString);
+
+            xml.onload = function () {
+                if (xml.status == 200) {
+                    let response = xml.responseText;
+                    let data = JSON.parse(response);
+
+                    if (data.status == "success") {
+                        alert(data.data);
+                        window.location.href = "www.baidu.com"
+                    } else {
+                        alert(data.data);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/ajax.js"></script>
+</head>
+
+<body>
+    <button>GET_A</button>
+    <button>GET_B</button>
+    <button>POST_A</button>
+    <script>
+        let oBtnA = document.querySelectorAll("button")[0];
+        let oBtnB = document.querySelectorAll("button")[1];
+        let oBtnC = document.querySelectorAll("button")[2];
+        oBtnA.onclick = () => {
+            ajax("get", "../server/05-get-a.php", null, (xhr) => document.write(xhr.responseText), (xhr) => document
+                .write(xhr
+                    .statusText), 1000);
+        }
+
+        oBtnB.onclick = () => {
+            get("../server/05-get-b.php", {
+                    username: "张三",
+                    password: "123456"
+                },
+                (xhr) => alert(xhr.responseText),
+                (xhr) => alert(xhr.statusText));
+        }
+
+        oBtnC.onclick = () => {
+            post({
+                url: "../server/06-post.php",
+                data: {
+                    num: "9999",
+                    email: "570066752@qq.com",
+                },
+                time: 1000,
+                success(xhr) {
+                    console.log(xhr.responseText)
+                },
+                error(xhr) {
+                    console.log(xhr.statusText);
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

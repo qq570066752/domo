@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="intid">
+    <ul id="list">
+
+    </ul>
+    <script>
+        // https: //www.baidu.com/sugrec?callback=&prod=pc_hao123&wd=%E2%80%9C%E4%BD%A0%E5%A5%BD%E2%80%9D
+        let oul = document.querySelector("#list");
+
+        function fn(o) {
+            let data = o.g || [];
+
+            let html = data.map(ele => `<li>${ele.q}</li>`).join("");
+            oul.innerHTML = html;
+        }
+    </script>
+    <script>
+        window.onload = () => {
+            let oint = document.querySelector("#intid");
+            // console.log(oint);
+            oint.oninput = function () {
+                let val = this.value;
+                let oScript = document.querySelector("#testID");
+                if (oScript) {
+                    document.body.removeChild(oScript);
+                }
+                oScript = document.createElement("script");
+                oScript.id = "testID";
+                oScript.setAttribute("src", "https://www.baidu.com/sugrec?callback=fn&prod=pc_hao123&wd=" +
+                    val);
+
+                // console.log(oScript);
+                document.body.appendChild(oScript);
+            };
+        }
+    </script>
+</body>
+
+</html>

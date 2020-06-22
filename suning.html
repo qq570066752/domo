@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>苏宁海鲜</title>
+    <script src="./jquery-3.5.1.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .product {
+            width: 1347px;
+            height: 1200px;
+        }
+
+        .general {
+            width: 1210px;
+            margin: 0 auto;
+            margin-bottom: 32px;
+        }
+
+        .item-wrap {
+            height: 310px;
+            position: relative;
+            float: left;
+            width: 220px;
+            margin: 40px 22px 30px 0;
+            /* background: red; */
+        }
+
+        img {
+            display: block;
+            height: auto;
+            width: auto;
+            max-width: 220px;
+            max-height: 220px;
+        }
+
+        .def-price {
+            float: left;
+            font-family: Tahoma;
+            height: 20px;
+            line-height: 18px;
+            font-size: 20px;
+            color: #F60;
+            font-weight: bold;
+        }
+
+        .title-selling-point {
+            width: 100%;
+            height: 40px;
+            overflow: hidden;
+            line-height: 20px;
+            vertical-align: top;
+            font-size: 12px;
+            margin: 8px 0;
+            word-break: break-all;
+        }
+
+        .info-evaluate {
+            width: 100%;
+            float: left;
+            /* display: inline-block; */
+            color: #999;
+            font-size: 12px;
+            display: block;
+        }
+
+        .store-stock {
+            height: 18px;
+            margin: 8px 0 0 0;
+            /* white-space: nowrap; */
+            /* text-overflow: ellipsis; */
+            color: #666;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="product">
+        <ul class="general">
+            <li class="item-wrap">
+                <!-- <img src="https://imgservice4.suning.cn/uimg1/b2c/image/-cuTILA9BoUOUU5UZb0x2A.jpg_400w_400h_4e" alt="">
+                <p class="def-price">¥299.00</p>
+                <p class="title-selling-point">【包鲜活】味库鲜活波龙加拿大进口鲜活波士顿龙虾800-900g 水产虾批发</p>
+                <div class="info-evaluate">20+评价</div>
+                <p class="store-stock">WECOOK生鲜官方旗舰店</p> -->
+            </li>
+        </ul>
+    </div>
+    <script>
+        let uls = document.querySelector(".general")
+        window.onload = function () {
+            $.getJSON("../server/suning_data.json", function success(data) {
+                var arr = data.map(function (item, index) {
+                    var html = ` <li class="item-wrap">
+                    <img src=${item.src} alt="">
+                    <p class="def-price">${item.price}</p>
+                    <p class="title-selling-point">${item.title}</p>
+                <div class="info-evaluate">${item.evaluate ? item.evaluate : ""}</div>
+                <p class="store-stock">${item.store}</p>
+                </li>`
+                    return html;
+                }).join("");
+                uls.innerHTML = arr;
+            });
+        }
+    </script>
+</body>
+
+</html>

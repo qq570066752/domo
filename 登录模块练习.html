@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.5.1.js"></script>
+</head>
+
+<body>
+    <form action="">
+        <label for="username">用户名</label>
+        <input type="text" placeholder="请输入用户名" id="username" name="user">
+        <label for="pwd">密码</label>
+        <input type="text" placeholder="请输入密码" id="pwd" name="pwd">
+    </form>
+    <button>登录</button>
+    <script>
+        $(() => {
+            $("button").click(() => {
+                let userText = $("input").eq(0).val().trim();
+                console.log(userText)
+                let pwdText = $("input").eq(1).val().trim();
+                if (userText.length == 0 || pwdText.length == 0) {
+                    alert("请输入必要的信息")
+                    return;
+                }
+                $.ajax({
+                    url: "../server/denglu.php",
+                    type: "post",
+                    timeout: 1000,
+
+                })
+
+            })
+
+        })
+    </script>
+</body>
+
+</html>

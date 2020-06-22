@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>按钮</button>
+    <script>
+        let oBtn = document.querySelector('botton');
+        oBtn.onclick = () => {
+            let xhr = new XMLHttpRequest;
+            let url = encodeURI("../server/server-2.php")
+            xhr.open("get", url, true);
+            xhr.send();
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        console.log(xhr.responseText);
+                    } else {
+                        console.log(xhr.statusText);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

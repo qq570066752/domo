@@ -1,0 +1,43 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-06-08 14:35:20
+ * @LastEditTime: 2020-06-08 15:59:41
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /code/day21/code/client/01-表单发送GET网络请求.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="../server/05.server.php" method="GET">
+        <label for="user">用户名：</label><input type="text" placeholder="请输入用户名" id="user" name="user">
+        <label for="pwd">密码</label><input type="text" placeholder="请输入密码" id="pwd" name="pwd">
+        <input type="submit" value="提交">
+    </form>
+
+    <script>
+        /* 表单发送网络请求 */
+        /* 三要素： */
+        /* (1) 请求路径 通过action这个属性来设置请求的路径,该路径可以是全路径或者是相对路径 */
+        /* 全路径：http://127.0.0.1/code/day21/code/server/05.server.php*/
+        /* 相对路径：../server/05.server.php */
+
+        /* (2) 请求方法 通过method属性来设置：GET|POST,如果不写，那么默认是GET请求*/
+        /* (3) 参数：客户端提交给服务器端的数据，参数在提交的时候需要以键值对的方式提交。*/
+        /* key    通过name属性来指定key           */
+        /* value  当前输入框中的值                */
+        // {"username":"ls","pwd":"asdad","email":"asafs@126.com"}
+
+        // 请求路径 http://127.0.0.1/code/day21/code/server/05.server.php?user=zs&pwd=321
+    </script>
+</body>
+
+</html>

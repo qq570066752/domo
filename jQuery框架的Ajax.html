@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jquery-3.4.1.js"></script>
+</head>
+
+<body>
+    <button id="getID">GET请求</button>
+    <button id="postID">POST请求</button>
+    <script>
+        $("#getID").click(() => {
+            $.ajax({
+                cache: true,
+                // async: false,
+                type: "get",
+                // data: {
+                //     username: "zs",
+                //     password: "123456",
+                // },
+                data: "username=lw&password=123456",
+                url: "../server/06-jq-ajax.php",
+                // dataType: "json",
+                success(data) {
+                    console.log("成功", data);
+                },
+                error(xhr, status) {
+                    console.log("失败", xhr, xhr.statusText);
+                }
+            });
+        })
+
+        $("#postID").click(() => {
+            $.ajax({
+                type: "post",
+                url: "../server/07-jq-ajax.php",
+
+                dataType: "json",
+                success(data) {
+                    console.log("成功", data);
+                },
+                error(xhr, status) {
+                    console.log("失败", xhr, status);
+                }
+            });
+        })
+    </script>
+</body>
+
+</html>
